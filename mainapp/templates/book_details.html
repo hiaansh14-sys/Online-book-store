@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block main %}
+
+<div class="row">
+    <div class="col-sm-10 mx-auto">
+        <div class="row">
+            <div class="col-sm-6">
+                {%if book.cover_image %}
+                <img src="{{book.cover_image.url}}" alt="image not found" width="600" height="500">
+                {%else%}
+                <img src="{% static 'img/blankcover.webp'%}" alt="no cover" class="img-fluid" width="600" height="500">
+                {% endif %}
+            </div>
+            <div class="col-sm-6">
+                <h3>Name:{{book.title}}</h3><br>
+                <h3>Author:{{book.author}}</h3><br>
+                <h3>Description:{{book.description}}</h3><br>
+                <h3>original_price: &#8377;<del>{{book.original_price}}</del> </h3><br>
+                <h3>price:&#8377;{{book.price}}</h3><br>
+                <h3>Published date:{{book.published_date}}</h3><br>
+                <h3>language:{{book.language}}</h3><br>
+                <h3>stock:{{book.stock}}</h3><br>
+                <h3>category:{{book.category}}</h3>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

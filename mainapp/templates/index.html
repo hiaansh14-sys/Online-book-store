@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+{% load static %}
+{% block main %}
+<h1>Home</h1>
+<!-- slider start -->
+<div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="{% static 'img/b1.jpg' %}" class="d-block w-100" alt="..." height="700">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'img/b2.png' %}" class="d-block w-100" alt="..." height="700">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'img/b3.jpg' %}" class="d-block w-100" alt="..." height="700">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+<!-- slider end -->
+<!-- card row 1 op -->
+<div class="row">
+  <div class="col-sm-12">
+    <section class="splide" aria-label="Splide Basic HTML Example">
+      <div class="splide__track">
+        <ul class="splide__list">
+          {% for b in books%}
+          <li class="splide__slide">
+
+            <a href="{%url 'book_details' id=b.id%}" class="text-decoration-none text-dark">
+              <div class="card m-3 h-100 text-center">
+                {%if b.cover_image %}
+                <img src="{{b.cover_image.url}}" card-img-top" alt="..." height="300">
+                {%else%}
+                <img src="{% static 'img/blankcover.webp'%}" alt="no cover" class="img-fluid">
+                {% endif %}
+                <div class="card-body text-center">
+                  <h5>{{b.title}}</h5>
+                  <div class="price">&#8377;{{b.original_price}}<span style="text-decoration: line-through;">&#8377;
+
+                      {{b.price}} </span></div>
+                  <i class="bi bi-car-front"></i>
+                  <form action="{% url 'addtocart' bid=b.id operator='+' %}" method="post">
+                    {% csrf_token %}
+                    <button class="btn btn-primary w-100 mt-3">Add To Card</button>
+                  </form>
+                </div>
+              </div>
+            </a>
+
+          </li>
+          {% endfor%}
+        </ul>
+      </div>
+    </section>
+  </div>
+</div>
+<h3 class="bg-light mt-3">WAR</h3>
+<div class="row">
+  <div class="col-sm-12">
+    <section class="splide" aria-label="Splide Basic HTML Example">
+      <div class="splide__track">
+        <ul class="splide__list">
+          {% for c in war_books %}
+          <li class="splide__slide">
+            <a href="{%url 'book_details' id=c.id%}" class="text-decoration-none text-dark">
+              <div class="card m-3 h-100 text-center">
+                {%if c.cover_image %}
+                <img src="{{c.cover_image.url}}" card-img-top" alt="..." height="300">
+                {%else%}
+                <img src="{% static 'img/blankcover.webp'%}" alt="no cover" class="img-fluid">
+                {% endif %}
+                <div class="card-body text-center">
+                  <h5>{{c.title}}</h5>
+                  <div class="price"><span style="text-decoration: line-through;">
+
+                      &#8377;{{c.original_price}} </span>{{c.price}}</div>
+                  <i class="bi bi-car-front"></i>
+                  <form action="{% url 'addtocart' bid=c.id operator='+' %}" method="post">
+                    {% csrf_token %}
+                    <button class="btn btn-primary w-100 mt-3">Add To Card</button>
+                  </form>
+                </div>
+              </div>
+            </a>
+
+          </li>
+          {% endfor%}
+        </ul>
+      </div>
+    </section>
+  </div>
+</div>
+<h3 class="bg-light mt-3">Technology</h3>
+<div class="row">
+  <div class="col-sm-12">
+    <section class="splide" aria-label="Splide Basic HTML Example">
+      <div class="splide__track">
+        <ul class="splide__list">
+          {% for b in tech_books %}
+          <li class="splide__slide">
+
+            <a href="{%url 'book_details' id=b.id%}" class="text-decoration-none text-dark">
+              <div class="card m-3 h-100 text-center">
+                {%if b.cover_image %}
+                <img src="{{b.cover_image.url}}" card-img-top" alt="..." height="300">
+                {%else%}
+                <img src="{% static 'img/blankcover.webp'%}" alt="no cover" class="img-fluid">
+                {% endif %}
+                <div class="card-body text-center">
+                  <h5>{{b.title}}</h5>
+                  <div class="price"><span style="text-decoration: line-through;">
+
+                     &#8377;{{b.original_price}}  </span>&#8377;{{b.price}}</div>
+                  <i class="bi bi-car-front"></i>
+                  <form action="{% url 'addtocart' bid=b.id operator='+' %}" method="post">
+                    {% csrf_token %}
+                    <button class="btn btn-primary w-100 mt-3">Add To Card</button>
+                  </form>
+                </div>
+              </div>
+            </a>
+
+          </li>
+          {% endfor%}
+        </ul>
+      </div>
+    </section>
+  </div>
+</div>
+{% endblock %}

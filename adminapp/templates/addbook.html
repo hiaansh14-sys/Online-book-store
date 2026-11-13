@@ -1,0 +1,51 @@
+{% extends 'adminbase.html'%}
+{% block admin%}
+<div class="row">
+  <div class="col-sm-12">
+    <h3>add book</h3>
+  </div>
+  <div class="col-sm-9 mx-auto">
+    <div class="card p-4">
+      <form method="post" enctype="multipart/form-data">
+        {%csrf_token%}
+        <label for="title">Book Title</label>
+        <input type="text" name="title" class="form-control mb-4" id="title">
+
+        <label for="author">Author</label>
+        <input type="text" name="author" class="form-control mb-4" id="author">
+
+        <label for="category">category</label><br>
+        <select name="catid" id="category" class="form-control">
+          <option value="" selected disabled>--selection--</option>
+          {%for c in categories %}
+          <option value="{{c.id}}">{{c.name}}</option>
+          {%endfor%}
+        </select><br><br>
+
+        <label for="language">language</label>
+        <input type="text" name="language" class="form-control mb-4" id="language">
+
+        <label for="description">description</label>
+        <textarea name="description" class="form-control mb-4" id="description"></textarea>
+
+        <label for="op">Oringinal price</label>
+        <input type="number" name="original_price" class="form-control mb-4" id="op">
+
+        <label for="price">price</label>
+        <input type="number" name="price" class="form-control mb-4" id="price">
+
+        <label for="published_date">published_date</label>
+        <input type="date" name="published_date" class="form-control mb-4" id="published_date">
+
+        <label for="cover_image">cover image</label>
+        <input type="file" name="cover_image" class="form-control mb-4" id="cover_image">
+
+        <label for="stock">stock</label>
+        <input type="number" name="stock" class="form-control mb-4" id="stock">
+
+        <button type="submit" name="sb" id="sb" style="background-color: rgb(57, 241, 57);">+ADD</button>
+        <form>
+    </div>
+  </div>
+</div>
+{% endblock %}

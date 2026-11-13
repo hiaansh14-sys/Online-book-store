@@ -1,0 +1,190 @@
+{% extends "base.html" %}
+{% load static %}
+{% block main %}
+
+<style>
+  .about-container {
+    max-width: 1000px;
+    margin: 3rem auto;
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .left-content,
+  .right-content {
+    flex: 1 1 400px;
+  }
+
+  .section-title {
+    color: blue;
+    margin-bottom: 1rem;
+  }
+
+  .content-section {
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #333;
+  }
+
+  .right-content img {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+  }
+
+  @media (max-width: 768px) {
+    .about-container {
+      flex-direction: column;
+    }
+  }
+
+  /* Team Section */
+  .team-section {
+    max-width: 1100px;
+    margin: 3rem auto 5rem;
+    padding: 0 1rem;
+  }
+
+  .team-title {
+    text-align: center;
+    color: blue;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+  }
+
+  .team-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  .team-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    width: 220px;
+    padding: 1.5rem 1rem;
+    text-align: center;
+    transition: transform 0.3s ease;
+  }
+
+  .team-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+  }
+
+  .team-photo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    border: 3px solid blue;
+    box-shadow: 0 0 8px rgba(40,167,69,0.5);
+  }
+
+  .team-name {
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .team-role {
+    font-style: italic;
+    color: #555;
+    font-size: 1rem;
+  }
+
+  @media (max-width: 600px) {
+    .team-cards {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+</style>
+
+<h1 class="section-title text-center">About Us</h1>
+<hr>
+
+<div class="about-container">
+  <div class="left-content">
+    <section class="content-section">
+      <h2 class="section-title">Our Story</h2>
+      <p>
+        Founded in 2020, our company started with a passion for books and learning.
+        We believe in the power of knowledge and have been dedicated to bringing the best books to our readers ever since.
+      </p>
+    </section>
+
+    <section class="content-section">
+      <h2 class="section-title">Our Mission</h2>
+      <p>
+        Our mission is to make quality books accessible to everyone, inspiring a lifelong love of reading and supporting education across all ages.
+      </p>
+    </section>
+
+    <section class="content-section">
+      <h2 class="section-title">Why Choose Us</h2>
+      <ul>
+        <li>Wide variety of books for every interest and age group</li>
+        <li>Competitive pricing and frequent discounts</li>
+        <li>Fast and reliable shipping</li>
+        <li>Customer satisfaction is our top priority</li>
+        <li>24/7 support for all your questions and concerns</li>
+      </ul>
+    </section>
+  </div>
+
+  <div class="right-content">
+    <img src="{% static 'img/bookreader.jpg' %}" alt="About Us Image" />
+  </div>
+</div>
+
+<!-- Team Members Section -->
+<section class="team-section">
+  <h2 class="team-title">Meet Our Team</h2>
+  <div class="team-cards">
+
+    <div class="team-card">
+      <img src="{% static 'img/Alice.jpg' %}" alt="Alice" class="team-photo" />
+      <div class="team-name">Alice Johnson</div>
+      <div class="team-role">Founder & CEO</div>
+    </div>
+
+    <div class="team-card">
+      <img src="{% static 'img/Bob Smith.jpg' %}" alt="Bob Smith" class="team-photo" />
+      <div class="team-name">Bob Smith</div>
+      <div class="team-role">Head of Marketing</div>
+    </div>
+
+    <div class="team-card">
+      <img src="{% static 'img/Carol Lee.jpg' %}" alt="Carol Lee" class="team-photo" />
+      <div class="team-name">Carol Lee</div>
+      <div class="team-role">Lead Developer</div>
+    </div>
+
+    <div class="team-card">
+      <img src="{% static 'img/David Kim.jpg' %}" alt="David Kim" class="team-photo" />
+      <div class="team-name">David Kim</div>
+      <div class="team-role">Customer Support</div>
+    </div>
+
+    <div class="team-card">
+      <img src="{% static 'img/Eva Wong.jpg' %}" alt="Eva Wong" class="team-photo" />
+      <div class="team-name">Eva Wong</div>
+      <div class="team-role">Content Writer</div>
+    </div>
+
+    <div class="team-card">
+      <img src="{% static 'img/frank_milker.jpg' %}" alt="Frank Miller" class="team-photo" />
+      <div class="team-name">Frank Miller</div>
+      <div class="team-role">Operations Manager</div>
+    </div>
+
+  </div>
+</section>
+
+{% endblock %}
